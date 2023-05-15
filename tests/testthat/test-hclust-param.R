@@ -61,3 +61,9 @@ test_that("clusterRows works with the dynamic tree cut", {
     expect_identical(length(out), nrow(m))
 })
 
+test_that("dist.fun parameter works correctly", {
+  m <- matrix(runif(1000), ncol=10)
+  dist_result <- clusterRows(m, HclustParam(metric = "euclidean"))
+  vegdist_result <- clusterRows(m, HclustParam(metric = "euclidean", dist.fun = vegan::vegdist))
+  expect_identical(dist_result, vegdist_result)
+})
