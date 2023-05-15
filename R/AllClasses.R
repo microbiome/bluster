@@ -102,6 +102,7 @@ setClass("FixedNumberParam", contains=c("BlusterParam", "VIRTUAL"), slots=c(cent
 setClass("HierarchicalParam", contains=c("BlusterParam", "VIRTUAL"), 
     slots=c(
         metric="ANY",
+        dist.fun="function_OR_NULL", 
         cut.fun="function_OR_NULL", 
         cut.dynamic="logical", 
         cut.params="list"
