@@ -66,4 +66,9 @@ test_that("dist.fun parameter works correctly", {
   dist_result <- clusterRows(m, HclustParam(metric = "euclidean"))
   vegdist_result <- clusterRows(m, HclustParam(metric = "euclidean", dist.fun = vegan::vegdist))
   expect_identical(dist_result, vegdist_result)
+  
+  vegdist_result2 <- clusterRows(m, HclustParam(metric = "canberra", dist.fun = vegan::vegdist), full = TRUE)
+  res_dist_matrix <- vegdist_result2$objects$dist
+  original_dist_matrix <- vegan::vegdist(m, "canberra")
+  expect_setequal(res_dist_matrix, original_dist_matrix)
 })
