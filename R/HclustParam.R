@@ -87,6 +87,12 @@ setMethod("[[", "HclustParam", function(x, i) {
 setMethod("show", "HclustParam", function(object) {
     object <- updateObject(object)
     callNextMethod()
+    fun <- object@dist.fun
+    if (!is.null(fun)) {
+        cat("dist.fun: custom\n")
+    } else {
+        cat("dist.fun: stats::dist\n")
+    }
 })
 
 #' @export
