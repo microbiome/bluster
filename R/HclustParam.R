@@ -99,9 +99,9 @@ setMethod("clusterRows", c("ANY", "HclustParam"), function(x, BLUSPARAM, full=FA
     }
     
     if (!is.null(BLUSPARAM@dist.fun)) {
-      dst <- do.call(BLUSPARAM@dist.fun, dargs)
+        dst <- do.call(BLUSPARAM@dist.fun, dargs)
     } else {
-      dst <- do.call(dist, dargs)
+        dst <- do.call(dist, dargs)
     }
 
     hargs <- list(quote(dst))
