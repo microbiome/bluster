@@ -73,3 +73,5 @@ test_that("dist.fun parameter works correctly", {
     original_dist_matrix <- vegan::vegdist(m, "canberra")
     expect_setequal(res_dist_matrix, original_dist_matrix)
 })
+
+

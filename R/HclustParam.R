@@ -88,6 +88,12 @@ setMethod("[[", "HclustParam", function(x, i) {
 setMethod("show", "HclustParam", function(object) {
     object <- updateObject(object)
     callNextMethod()
+    fun <- object@dist.fun
+    if (!is.null(fun)) {
+        cat("dist.fun: custom\n")
+    } else {
+        cat("dist.fun: stats::dist\n")
+    }
 })
 
 #' @export
@@ -100,9 +106,9 @@ setMethod("clusterRows", c("ANY", "HclustParam"), function(x, BLUSPARAM, full=FA
     }
     
     if (!is.null(BLUSPARAM@dist.fun)) {
-      dst <- do.call(BLUSPARAM@dist.fun, dargs)
+        dst <- do.call(BLUSPARAM@dist.fun, dargs)
     } else {
-      dst <- do.call(dist, dargs)
+        dst <- do.call(dist, dargs)
     }
 
     hargs <- list(quote(dst))
