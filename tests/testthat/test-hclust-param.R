@@ -74,4 +74,3 @@ test_that("dist.fun parameter works correctly", {
     expect_setequal(res_dist_matrix, original_dist_matrix)
 })
 
-
