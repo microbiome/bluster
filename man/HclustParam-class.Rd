@@ -66,7 +66,9 @@ To modify an existing HclustParam object \code{x},
 users can simply call \code{x[[i]]} or \code{x[[i]] <- value} where \code{i} is any argument used in the constructor.
 
 If \code{cut.fun=NULL}, \code{cut.dynamic=FALSE} and \code{cut.params} does not have \code{h} or \code{k},
-\code{\link{clusterRows}} will automatically set \code{h} to half the tree height when calling \code{\link{cutree}}.
+\code{\link{clusterRows}} will automatically set \code{h} to half the tree height when calling \code{\link{cutree}}. 
+
+The dist.fun parameter must be a function takes method as a parameter and returns a dissimilarity matrix. If not, it will lead to an error.
 }
 \examples{
 clusterRows(iris[,1:4], HclustParam())
